@@ -1,3 +1,5 @@
+'use client'
+
 import React, {useContext} from 'react'
 
 import Link from 'next/link'
@@ -5,6 +7,8 @@ import Link from 'next/link'
 import { categories } from '@/constants'
 
 const Header = () => {
+    const key1=process.env.NEXT_PUBLIC_KEY1
+    alert(key1);
 
   return (
     <div className='container mx-auto px-10 mb-8'>
