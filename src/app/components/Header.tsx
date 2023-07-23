@@ -1,16 +1,20 @@
 'use client'
 
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 
 import Link from 'next/link'
 
 import { categories } from '@/constants'
+import { getCategories } from '@/util'
 
 const Header = () => {
-    const key1=process.env.NEXT_PUBLIC_KEY1
-    alert(key1);
+    const [categories, setCategories] = useState([]);
 
-  return (
+    useEffect(() => {
+      getCategories().then((newCategories) => setCategories(newCategories))
+    },[])
+
+    return (
     <div className='container mx-auto px-10 mb-8'>
         <div className='border-b w-full inline-block border-blue-400 py-8'>
             <div className='md:float-left block'>
@@ -22,7 +26,7 @@ const Header = () => {
 
             </div>
             <div className='hidden md:float-left md:contents'>
-                { categories.map((category) => (
+                { categories.map((category:any) => (
                     <Link
                         key={ category.slug }
                         href={ `/category/${category.slug}` }
@@ -38,7 +42,7 @@ const Header = () => {
         </div>
 
     </div>
-  )
+    )
 }
 
 export default Header

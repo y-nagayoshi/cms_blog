@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { PostCardProps } from '../../types/index'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,6 +9,7 @@ import Image from 'next/image'
 import moment from 'moment'
 
 const PostCard = ({post}:any) => {
+  console.log(post);
 
   return (
     <div className='bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
@@ -60,7 +62,9 @@ const PostCard = ({post}:any) => {
       </p>
 
       <div className='text-center'>
-        <Link href={`/post/${post.slug}`}
+        <Link href={{
+          pathname: `/post/${post.slug}`,
+          query: `${post.slug}`}}
         >
           <span className='transition duration-400 transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-midium rounded-full text-white px-8 py-3 cursor-pointer'>
             Continue Reading...

@@ -1,19 +1,23 @@
+// 'use client'
+
 import Image from 'next/image'
 import { posts } from '../constants'
-import { Categories, PostWidget } from './components'
+import { Categories, PostCard, PostWidget } from './components'
 
-export default function Home() {
-  
+import { getPosts } from '@/util'
+
+export default async function Home() {
+  const posts  = await getPosts();
 
   return (
     <main>
-      <div className='grid grid-cols-1 lg:grid-cols-12 gap-12  bg-gray-100'>
+      <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 '>
         <div className='lg:col-span-8 col-span-1'>
-          {posts.map((post, index) => (
-            <div key={index}>
-              {post.title}
-              {post.excerpt}
-            </div>
+          {posts.map((post,index) => (
+            <PostCard 
+              post={post.node}
+              key={index}
+            />
           ))}
         </div>
 
