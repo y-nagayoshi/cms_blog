@@ -2,7 +2,7 @@ import {request, gql} from 'graphql-request'
 import { getSimilarPostsProps, graphCMSAPIProps } from '@/types';
 import { graphql } from 'graphql';
 
-const graphqlAPI = process.env.GRAPHCMS_ENDPOINT || "";
+const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT || "";
 
 export const getPosts = async () => {
 
@@ -37,17 +37,13 @@ export const getPosts = async () => {
   `;
 
   const result:graphCMSAPIProps = await request(graphqlAPI, query);
-
   return result.postsConnection.edges;
 }
 
 export const getRecentPosts = async () => {
   const query = gql`
-  query GetPostDetails() {
-    posts(
-      orderBy: createdAt_ASC
-      last: 3
-      ) {
+    query GetRecentPost {
+      posts(orderBy: createdAt_ASC, last: 3) {
         title
         featuredImage {
           url
@@ -55,11 +51,10 @@ export const getRecentPosts = async () => {
         createdAt
         slug
       }
-  }
+    }
 ` 
 
  const result:any = await request(graphqlAPI, query);
-
  return result.posts;
 }
 
