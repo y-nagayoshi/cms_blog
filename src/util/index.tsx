@@ -2,7 +2,7 @@ import {request, gql} from 'graphql-request'
 import { getSimilarPostsProps, graphCMSAPIProps } from '@/types';
 import { graphql } from 'graphql';
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT || "";
+const graphqlAPI = process.env.GRAPHCMS_ENDPOINT || "";
 
 export const getPosts = async () => {
 
