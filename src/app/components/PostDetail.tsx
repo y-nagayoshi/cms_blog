@@ -6,7 +6,6 @@ import moment from 'moment';
 import Image from 'next/image';
 
 const PostDetail = ({ post }:any) => {
-  console.log(post);
 
   return (
     <>
