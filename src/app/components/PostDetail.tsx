@@ -4,8 +4,11 @@ import React from 'react';
 
 import moment from 'moment';
 import Image from 'next/image';
+import parse from 'html-react-parser';
+
 
 const PostDetail = ({ post }:any) => {
+  console.log(post.content.html);
 
   return (
     <>
@@ -41,7 +44,7 @@ const PostDetail = ({ post }:any) => {
           <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
 
           <div>
-          {post.content.raw.children[0].children[0].text}
+            {parse(post.content.html)}
           </div>
         </div>
       </div>

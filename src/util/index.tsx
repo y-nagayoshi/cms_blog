@@ -107,7 +107,7 @@ export const getPostDetails = async (slug:string) => {
       createdAt
       slug
       content {
-        raw
+        html
       }
       categories {
         name
@@ -122,7 +122,6 @@ export const getPostDetails = async (slug:string) => {
       }
     }
   }
-  
   `
 
   const result:any = await request(graphqlAPI, query);

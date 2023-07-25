@@ -17,7 +17,7 @@
     "eslint-config-next": "13.4.11",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
-    "html-react-parser": "^4.1.0",
+    "html-react-parser": "^4.2.0",
     "moment": "^2.29.4",
     "next": "13.4.11",
     "postcss": "8.4.26",
