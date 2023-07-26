@@ -8,7 +8,6 @@ import parse from 'html-react-parser';
 
 
 const PostDetail = ({ post }:any) => {
-  console.log(post.content.html);
 
   return (
     <>

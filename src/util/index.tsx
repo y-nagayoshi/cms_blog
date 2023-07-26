@@ -129,3 +129,45 @@ export const getPostDetails = async (slug:string) => {
 }
 
 export const grpahCMSImageLoader = ({ src }:any) => src;
+
+
+
+export const getCategoriesPost = async (slug:any) => {
+
+  const query = gql`
+  query GetCategoriesPost {
+    postsConnection(where: {AND: {categories_some: {slug: "${slug}"}}}) {
+      ...PostConnectionFragment
+    }
+  }
+  
+  fragment PostConnectionFragment on PostConnection {
+    edges {
+      node {
+        auther {
+          bio
+          id
+          name
+          photo {
+            url
+          }
+        }
+        createdAt
+        slug
+        title
+        excerpt
+        featuredImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+      }
+    }
+  }
+  `;
+
+  const result:any = await request(graphqlAPI, query);
+  return result.postsConnection.edges;
+}
